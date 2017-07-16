@@ -4,6 +4,9 @@ import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { NavigationProvider, StackNavigation } from '@expo/ex-navigation';
 import { FontAwesome } from '@expo/vector-icons';
 
+import { Provider } from 'react-redux';
+import configureStore from './redux/store/store';
+
 import Router from './navigation/Router';
 import cacheAssetsAsync from './utilities/cacheAssetsAsync';
 
@@ -37,14 +40,19 @@ class AppContainer extends React.Component {
   }
 
   render() {
+    //could add a preloaded state
+    const store = configureStore();
+    console.log(store);
     if (this.state.appIsReady) {
       return (
         <View style={styles.container}>
           <NavigationProvider router={Router}>
-            <StackNavigation
-              id="root"
-              initialRoute={Router.getRoute('rootNavigation')}
-            />
+            <Provider store={store}>
+              <StackNavigation
+                id="root"
+                initialRoute={Router.getRoute('rootNavigation')}
+              />
+            </Provider>
           </NavigationProvider>
 
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
