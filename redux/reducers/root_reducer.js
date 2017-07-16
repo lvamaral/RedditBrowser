@@ -3,7 +3,7 @@ import redditReducer from './reddit_reducer';
 
 
 const rootReducer = combineReducers({
-  session: redditReducer,
+  posts: redditReducer,
 });
 
 
