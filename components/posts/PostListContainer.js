@@ -1,16 +1,16 @@
 import { connect } from 'react-redux';
-import { getPosts } from '../../redux/actions/reddit_actions';
+import {fetchData} from '../../redux/actions/reddit_actions';
 import PostList from './PostList';
 
 const mapStateToProps = ({posts}) => {
   return {
-    posts
+    posts: posts
   }
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
-    getPosts: () => dispatch(getPosts())
+    getPosts: () => dispatch(fetchData())
   };
 };
 

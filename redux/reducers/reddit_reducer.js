@@ -7,7 +7,7 @@ const redditReducer = (state = {}, action) => {
   Object.freeze(state)
   switch(action.type) {
     case RECEIVE_POSTS:
-      return posts
+      return action.posts
     default:
       return state;
   }
