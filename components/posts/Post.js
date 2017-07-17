@@ -36,7 +36,7 @@ class Post extends React.Component {
 
   render(){
     return(
-      <TouchableOpacity onPress={() => navigator.push('postView', {info: this.info})}>
+      <TouchableOpacity onPress={() => this.props.navigator.push('postView', {info: this.info})}>
       <View style={styles.postContainer}>
         <View style={styles.postVotes}>
           <FontAwesome style={styles.votes} name={"chevron-up"} size={16}/>

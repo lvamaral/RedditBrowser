@@ -42,19 +42,20 @@ class AppContainer extends React.Component {
   render() {
     //could add a preloaded state
     const store = configureStore();
-    window.store = store;
+
     if (this.state.appIsReady) {
       return (
         <View style={styles.container}>
-          <NavigationProvider router={Router}>
-            <Provider store={store}>
-              <StackNavigation
-                id="root"
-                initialRoute={Router.getRoute('rootNavigation')}
-              />
-            </Provider>
-          </NavigationProvider>
+          <Provider store={store}>
+            <NavigationProvider router={Router}>
 
+                <StackNavigation
+                  id="root"
+                  initialRoute={Router.getRoute('rootNavigation')}
+                />
+
+            </NavigationProvider>
+          </Provider>
           {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
           {Platform.OS === 'android' &&
             <View style={styles.statusBarUnderlay} />}

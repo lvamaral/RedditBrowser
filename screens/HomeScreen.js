@@ -7,14 +7,15 @@ import { MonoText } from '../components/StyledText';
 export default class HomeScreen extends React.Component {
   static route = {
     navigationBar: {
-      visible: false,
-    },
-  };
+      title: 'Home',
+    }
+  }
 
   render() {
+  
     return (
       <View style={styles.container}>
-        <PostListContainer/>
+        <PostListContainer navigator={this.props.navigator}/>
       </View>
     );
   }

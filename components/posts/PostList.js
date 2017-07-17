@@ -20,7 +20,7 @@ class PostList extends React.Component {
     if (Object.keys(this.props.posts).length === 0) {
       return (<View><Text style={styles.loadingText}>Loading...</Text></View>)
     } else {
-      return this.props.posts.map((el, i) => <Post key={i} info={el}/>)
+      return this.props.posts.map((el, i) => <Post key={i} info={el} navigator={this.props.navigator}/>)
     }
   }
 
@@ -38,8 +38,7 @@ export default PostList;
 
 const styles = StyleSheet.create({
   container: {
-    padding: 5,
-    paddingTop: 20,
+    paddingHorizontal: 5,
     flex: 1,
     backgroundColor: '#fff',
   },
