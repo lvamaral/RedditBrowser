@@ -42,7 +42,7 @@ class AppContainer extends React.Component {
   render() {
     //could add a preloaded state
     const store = configureStore();
-    console.log(store);
+    console.log("store:", store);
     if (this.state.appIsReady) {
       return (
         <View style={styles.container}>
