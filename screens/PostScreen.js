@@ -21,27 +21,32 @@ export default class LinksScreen extends React.Component {
     return (
       <View style={styles.postContainer}>
         <Text style={styles.title}>{this.props.info.title}</Text>
-        <Text style={styles.subTitle}>{this.props.info.title}</Text>
+        <Text style={styles.subTitle}>{`Submitted by: ${this.props.info.author}`}</Text>
         <View style={styles.postImageContainer}>
           <Image style={styles.postImage} source={{uri: `${this.props.info.thumbnail}`}}/>
         </View>
       </View>
     );
   }
+
 }
+
 
 const styles = StyleSheet.create({
   postContainer: {
     flex: 1,
     backgroundColor: '#fff',
-    flexDirection: 'row'
   },
   postImageContainer: {
     flex: 1,
+    dispay: 'flex',
+    alignContent: 'center',
+    justifyContent: 'center',
   },
   postImage: {
-    width: 100,
-    height: 100,
+    alignSelf: 'center',
+    width: 200,
+    height: 200,
   },
   title: {
     fontSize: 20,
