@@ -5,6 +5,7 @@ import {
   Text,
   View,
   Image,
+  TouchableOpacity,
 } from 'react-native';
 import {FontAwesome} from '@expo/vector-icons';
 
@@ -35,11 +36,12 @@ class Post extends React.Component {
 
   render(){
     return(
+      <TouchableOpacity onPress={() => navigator.push('postView', {info: this.info})}>
       <View style={styles.postContainer}>
         <View style={styles.postVotes}>
-          <FontAwesome name={"chevron-up"} size={16}/>
+          <FontAwesome style={styles.votes} name={"chevron-up"} size={16}/>
           <Text style={styles.text}>{this.getScore()}</Text>
-          <FontAwesome name={"chevron-down"} size={16}/>
+          <FontAwesome style={styles.votes} name={"chevron-down"} size={16}/>
         </View>
         <View style={styles.postImageContainer}>
           <Image style={styles.postImage} source={{uri: `${this.info.thumbnail}`}}/>
@@ -53,6 +55,7 @@ class Post extends React.Component {
           </View>
         </View>
       </View>
+    </TouchableOpacity>
     )
   }
 }
@@ -69,11 +72,13 @@ const styles = StyleSheet.create({
   },
   postVotes: {
     paddingHorizontal: 5,
-
     display: 'flex',
     alignSelf: 'center',
     justifyContent: 'center',
     alignContent: 'center',
+  },
+  votes: {
+    paddingLeft: 3,
   },
   postImage: {
     width: 50,
