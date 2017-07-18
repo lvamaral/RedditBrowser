@@ -34,14 +34,15 @@ export default class LinksScreen extends React.Component {
 
 const styles = StyleSheet.create({
   postContainer: {
+    paddingTop: 5,
     flex: 1,
     backgroundColor: '#fff',
   },
   postImageContainer: {
     flex: 1,
-    dispay: 'flex',
-    alignContent: 'center',
-    justifyContent: 'center',
+    display: 'flex',
+    alignContent: 'flex-start',
+  
   },
   postImage: {
     alignSelf: 'center',
