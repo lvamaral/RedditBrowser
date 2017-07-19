@@ -3,17 +3,17 @@
 
 This is a simple app that allows you to easily browse Reddit on your mobile device.
 
-##Running the App
+## Running the App
 
 The fastest way to see this app in a mobile device (iOS or Android) is to follow this link:
 https://expo.io/@lvamaral/reddit-browser
 (You will need to download the expo client)
 
-##Technology
+## Technology
 
 This project was made using React Native with a Redux infrastructure. It fetches data from the Reddit API, stores it locally for faster access, and displays it in a refreshable list. Using exRouter users can click on a post and browse back very efficiently.  
 
-##Process
+## Process
 
 This app was built as part of a coding challenge. The entire process took around 2-3 days, working a few hours per day.
 
