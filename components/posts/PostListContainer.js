@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import {fetchData} from '../../redux/actions/reddit_actions';
+import {fetchData, loadPosts} from '../../redux/actions/reddit_actions';
 import PostList from './PostList';
 
 const mapStateToProps = ({posts}) => {
@@ -10,7 +10,8 @@ const mapStateToProps = ({posts}) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getPosts: () => dispatch(fetchData())
+    getPosts: () => dispatch(fetchData()),
+    loadPosts: (posts) => dispatch(loadPosts(posts))
   };
 };
 

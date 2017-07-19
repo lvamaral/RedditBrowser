@@ -4,18 +4,39 @@ import {
   ScrollView,
   Text,
   View,
-  RefreshControl
+  RefreshControl,
+  AsyncStorage
 } from 'react-native';
 import Post from './Post';
 
 class PostList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {refreshing: false};
+    this.state = {refreshing: false, preloadedPosts: []};
   }
 
   componentDidMount(){
-    this.props.getPosts();
+    this.checkForPosts();
+  }
+
+  async checkForPosts(){
+    try {
+      const value = await AsyncStorage.getItem('posts');
+      if (value !== null){
+        //There are loaded posts in local storage
+        this.props.loadPosts(JSON.parse(value))
+      } else {  
+        //No posts in local storage, let's request them and then save it
+        try {
+          let promise = await this.props.getPosts();
+          await AsyncStorage.setItem('posts', JSON.stringify(promise.posts));
+        } catch (error) {
+          console.log('Error saving data');
+        }
+      }
+    } catch (error) {
+      console.log('Error getting data');
+    }
   }
 
   _onRefresh() {
